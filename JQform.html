@@ -1,0 +1,106 @@
+<!Doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Registration Form </title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="wrapper" id="div1">
+        <div class="title">
+            Registration Form
+        </div>
+        <div class="form">
+
+            <div class="input_field">
+                <label for="sname"> Student Name :</label>
+                <input type="text" id="sname" name="sname" class="input">
+            </div>
+            <div class="input_field">
+                <label for="sage"> Age :</label>
+                <input type="text" id="sage" name="sage" class="input">
+            </div>
+            <div class="input_field">
+                <label for="sclass"> Class :</label>
+                <input type="text" id="sclass" name="sclass" class="input">
+            </div>
+            <div class="input_field">
+                <label for="saddress"> Address :</label>
+                <textarea class="textarea" id="saddress" name="saddress"></textarea>
+            </div>
+            <div class="input_field">
+                <label for="sphoneno"> Phone No. :</label>
+                <input type="number" id="sphoneno" name="sphoneno" class="input">
+            </div>
+            <div class="input_field">
+                <label for="semail"> Email Id :</label>
+                <input type="text" id="semail" name="semail" class="input">
+            </div>
+            <div class="input_field">
+                <button type="submit" id="Btnsub" value="Register" class="btn">Register</button>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $("#Btnsub").click(function (event) {
+                // alert("hello");
+                var name = $("#sname").val();
+                var age = $("#sage").val();
+                var sclass = $("#sclass").val();
+                var address = $("#saddress").val();
+                var phone = $("#sphoneno").val();
+                var email = $("#semail").val();
+
+                $.post("addstudent.php",
+                    {
+                        sname: name,
+                        sage: age,
+                        sclass: sclass,
+                        saddress: address,
+                        sphoneno: phone,
+                        semail: email
+                    }, function (data, status) {
+                        //   alert("Data: " + data );
+                        if (data == "success") {
+
+                            location.replace("JQCreatePass.html")
+                           
+                        } else {
+                            alert(data);
+                        }
+                       
+
+
+                    });
+
+
+
+              
+            });
+        });
+
+
+
+    // submit = function () {
+
+    // }
+
+    // submit = () => {
+
+    // }
+
+    </script>
+</body>
+
+</html>
